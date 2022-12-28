@@ -1,0 +1,40 @@
+#estrella{
+    margin:2em 0;
+    position: relative;
+    display: block;
+    width: 0;
+    height: 0;
+    border-right: 5em solid transparent;
+    border-bottom: 3em solid red;
+    border-left: 5em solid transparent;
+    transform: rotate(35deg);
+}
+
+#estrella:before{
+    content: '';
+    border-bottom: 3em solid red;
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    position: absolute;
+    width: 0;
+    height: 0; 
+    top: -2em;
+    left: -50px;
+    display: block;
+    transform: rotate(-35deg); 
+}
+
+#estrella:after{
+    content: '';
+    position:absolute;
+    display: block;
+    color:aqua;
+    top: 0.5em;
+    left: -6.2em;
+    width: 0;
+    height: 0; 
+    border-right: 5em solid transparent;
+    border-bottom: 3em solid red;
+    border-left: 5em solid transparent;
+    transform: rotate(-70deg);
+}

@@ -1,0 +1,32 @@
+{% extends 'plantilla.html' %}
+
+{% block contenido %}
+<h2 class="text-center mb-5">Crear Libro</h2>
+<div class="container">
+    <form action="{% url 'crearLibro' %}" method="post">
+        {% csrf_token %}
+        <input class="form-control mb-3" type="text" name="titulo" required placeholder="Titulo">
+        <input class="form-control mb-3" type="text" name="autor" required placeholder="Autor">
+        <input class="form-control mb-3" type="text" name="palabrasClaves" placeholder="Palabras claves">
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-select" name="categoria" required>
+                    <option selected value="">...</option>
+                    <option value="cientifico">Cientifico</option>
+                    <option value="ficcion">Ficcion</option>
+                    <option value="biografia">Biografia</option>
+                    <option value="comedia">Comedia</option>
+                </select>
+
+            </div>
+            <div class="col">
+                <input class="form-control" type="number" name="valor" required placeholder="valor">
+            </div>
+        </div>
+        <input class="form-control mb-3" type="text" name="urlImagen" required placeholder="url imagen">
+        <input class="form-control mb-3" type="text" name="descripcion" required placeholder="descripcion">
+
+        <button type="submit" class="btn btn-primary">Crear Libro</button>
+    </form>
+</div>
+{% endblock %}

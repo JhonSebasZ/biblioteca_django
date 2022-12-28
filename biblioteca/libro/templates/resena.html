@@ -1,0 +1,45 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'resena.css' %}" type="text/css">
+{% endblock %}
+
+{% block contenido %}
+<h2 class="text-center">Reseñas</h2>
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <h3>Comentario</h3>
+            <div class="col">
+                <textarea class="form-control" name="comentario" cols="30" rows="8" required></textarea>
+            </div>
+        </div>
+        <div class="row mt-5 fs-3">
+            <h3>Calificacion</h3>
+            <div class="col">
+                <input type="radio" class="form-check-input" name="calificacion" id="1" required value="1" checked>
+                <label for="1" class="for-check-label">1</label>
+            </div>
+            <div class="col">
+                <input type="radio" class="form-check-input" name="calificacion" id="2" value="2">
+                <label for="2" class="for-check-label">2</label>
+            </div>
+            <div class="col">
+                <input type="radio" class="form-check-input" name="calificacion" id="3" value="3">
+                <label for="3" class="for-check-label">3</label>
+            </div>
+            <div class="col">
+                <input type="radio" class="form-check-input" name="calificacion" id="4" value="4">
+                <label for="4" class="for-check-label">4</label>
+            </div>
+            <div class="col">
+                <input type="radio" class="form-check-input" name="calificacion" id="5" value="5">
+                <label for="5" class="for-check-label">5</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-5">Enviar</button>
+    </form>
+</div>
+{% endblock %}

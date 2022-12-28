@@ -1,0 +1,69 @@
+{% extends 'plantilla.html' %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-10 col-xl-3 p-2">
+            <div class="card text-center">
+                <div class="d-inline-block">
+                    <img src="{{ libro.imagen }}" class="card-img-top" alt="...">
+                </div>
+            </div>
+        </div>
+
+        <div class="col container">
+            <h5 class="text-center">{{ libro.titulo }}</h5>
+            <p>{{ libro.descripcion }}</p>
+
+            <div><span class="fw-bold">Autor:</span> {{libro.autor}}</div>
+            <div><span class="fw-bold">Categoria:</span> {{libro.categoria}}</div>
+            <div><span class="fw-bold">Valor: $</span> {{libro.valor}}</div>
+            <div><span class="fw-bold">Palabras Claves:</span> 
+                {% for palabra in libro.palabras_claves %}
+                {{palabra}},
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex mt-3 mb-5">
+        <div class="">
+            <a href="{% url 'agregarCarro' libro.id_libro %}" class="btn btn-primary">Comprar</a>
+        </div>
+        <div class="mx-3">
+            <a href="{% url 'agregarDeseos' libro.id_libro %}" class="btn btn-primary">Agregar a Deseos</a>
+        </div>
+    </div>
+
+    <div class="d-flex my-1">
+        <h3>Reseñas</h3>
+        <a href="{% url 'agregarResena' libro.id_libro %}" class="btn btn-success ms-2">+</a>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <h5>Comentario</h5>
+        </div>
+        <div class="col">
+            <h5>Calificacion</h5>
+        </div>
+        <div class="col">
+            <h5>Fecha</h5>
+        </div>
+        <hr>
+    </div>
+    <div class="row">
+        {% for resena in libro.resenas %}
+        <div class="col">
+            <p>{{ resena.comentario }}</p>
+        </div>
+        <div class="col">
+            <p>{{ resena.calificacion }}</p>
+        </div>
+        <div class="col">
+            <p>{{ resena.fecha }}</p>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
