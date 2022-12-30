@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(_m_xameejb*(@t$bay)9tnq=wxhm^tm%bp!#3-x*!x)zk))w1'
+# SECRET_KEY = 'django-insecure-(_m_xameejb*(@t$bay)9tnq=wxhm^tm%bp!#3-x*!x)zk))w1'
+SECRET_KEY = os.environ.get('_m_xameejb*(@t$bay)9tnq=wxhm^tm%bp!#3-x*!x)zk))w1', default='clave')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,3 +131,20 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = os.path(BASE_DIR, '')
+MEDIA_URL = '/imagenes'
+
+# update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['defaulf'].update(db_from_env)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstaic to find static files
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static')
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
